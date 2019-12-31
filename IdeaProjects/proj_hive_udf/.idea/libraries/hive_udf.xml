@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="hive_udf">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/hive_udf/hive_udf.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

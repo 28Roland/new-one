@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_proj_quadkey_utils" default="compile.module.proj_quadkey_utils">
+  <dirname property="module.proj_quadkey_utils.basedir" file="${ant.file.module_proj_quadkey_utils}"/>
+  
+  <property name="module.jdk.home.proj_quadkey_utils" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.proj_quadkey_utils" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.proj_quadkey_utils" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.proj_quadkey_utils" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="proj_quadkey_utils.output.dir" value="${module.proj_quadkey_utils.basedir}/out/production/proj_quadkey_utils"/>
+  <property name="proj_quadkey_utils.testoutput.dir" value="${module.proj_quadkey_utils.basedir}/out/test/proj_quadkey_utils"/>
+  
+  <path id="proj_quadkey_utils.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="proj_quadkey_utils.module.production.classpath">
+    <path refid="${module.jdk.classpath.proj_quadkey_utils}"/>
+  </path>
+  
+  <path id="proj_quadkey_utils.runtime.production.module.classpath">
+    <pathelement location="${proj_quadkey_utils.output.dir}"/>
+  </path>
+  
+  <path id="proj_quadkey_utils.module.classpath">
+    <path refid="${module.jdk.classpath.proj_quadkey_utils}"/>
+    <pathelement location="${proj_quadkey_utils.output.dir}"/>
+  </path>
+  
+  <path id="proj_quadkey_utils.runtime.module.classpath">
+    <pathelement location="${proj_quadkey_utils.testoutput.dir}"/>
+    <pathelement location="${proj_quadkey_utils.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.proj_quadkey_utils">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.proj_quadkey_utils">
+    <patternset refid="excluded.from.module.proj_quadkey_utils"/>
+  </patternset>
+  
+  <path id="proj_quadkey_utils.module.sourcepath">
+    <dirset dir="${module.proj_quadkey_utils.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.proj_quadkey_utils" depends="compile.module.proj_quadkey_utils.production,compile.module.proj_quadkey_utils.tests" description="Compile module proj_quadkey_utils"/>
+  
+  <target name="compile.module.proj_quadkey_utils.production" depends="register.custom.compilers" description="Compile module proj_quadkey_utils; production classes">
+    <mkdir dir="${proj_quadkey_utils.output.dir}"/>
+    <javac2 destdir="${proj_quadkey_utils.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.proj_quadkey_utils}/javac">
+      <compilerarg line="${compiler.args.proj_quadkey_utils}"/>
+      <bootclasspath refid="proj_quadkey_utils.module.bootclasspath"/>
+      <classpath refid="proj_quadkey_utils.module.production.classpath"/>
+      <src refid="proj_quadkey_utils.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.proj_quadkey_utils"/>
+    </javac2>
+    
+    <copy todir="${proj_quadkey_utils.output.dir}">
+      <fileset dir="${module.proj_quadkey_utils.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.proj_quadkey_utils.tests" depends="register.custom.compilers,compile.module.proj_quadkey_utils.production" description="compile module proj_quadkey_utils; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.proj_quadkey_utils" description="cleanup module">
+    <delete dir="${proj_quadkey_utils.output.dir}"/>
+    <delete dir="${proj_quadkey_utils.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,0 +1,31 @@
+1. Download latest Anaconda distribution for python 3.7
+
+https://www.anaconda.com/download/#linux
+
+2. Install it
+
+cd ~/Download
+
+chmod +x Anaconda3-2019.07-Linux-x86_64.sh
+
+./Anaconda3-2019.07-Linux-x86_64.sh
+
+3. Add anaconda bin to PATH env variable
+
+vim ~/.bashrc
+
+export ANACONDA_HOME=/home/cloudera/anaconda3
+export PATH=$ANACONDA_HOME/bin:$PATH
+
+4. Source it
+
+source ~/.bashrc
+
+5. Test it
+
+[cloudera@quickstart ~]$ python
+Python 3.7.x
+
+6. Install PyCharm (optional)
+
+https://www.jetbrains.com/pycharm/

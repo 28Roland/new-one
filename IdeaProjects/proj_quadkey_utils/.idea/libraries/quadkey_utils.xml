@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="quadkey_utils">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/quadkey_utils/quadkey_utils.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
